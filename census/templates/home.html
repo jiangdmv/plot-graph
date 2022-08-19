@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <ul>
+    <li>
+      <a href="{% url 'upload' %}">Test Benford's Law</a>
+    </li>
+  </ul>
+
+  <p>Submitted data files:</p>
+  <ul>
+    {% for obj in documents %}
+      <li>
+      <div style="display: flex">
+        <a href="{{ obj.document.url }}">{{ obj.document.name }}</a>
+      <form method="post" action="{% url 'delete' obj.id %}">
+          {% csrf_token %}
+          <button type="submit">Delete</button>
+      </form>
+          </div>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit</button>
+  </form>
+
+{% for message in messages %}
+    <div class="alert" style="color: red">
+    {{ message }}
+    </div>
+    {% endfor %}
+
+    {% if graphic %}
+        <div>
+        {{ graphic|safe }}
+        </div>
+    <div class="description" style="font-size: 20px; color: blue">
+    {{ conclusion|linebreaks}}
+    </div>
+     {% endif %}
+  <p><a href="{% url 'home' %}">Return to home</a></p>
+{% endblock %}

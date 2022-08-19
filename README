@@ -1,0 +1,17 @@
+build:
+docker-compose up -d --build
+
+run:
+docker-compose up
+
+docker-compose exec web python manage.py migrate
+
+Connect to django app docker:
+docker exec -t -i 66175bfd6ae6 bash
+
+Database:
+PostgreSQL
+
+
+
+
